@@ -1,5 +1,7 @@
 <?php
 
+
+  //tampilan header
   echo "<h2>-- POLGAN MART --</h2>";
 
      $kode_barang  = ["B001", "B002", "B003", "B004", "B005"];
