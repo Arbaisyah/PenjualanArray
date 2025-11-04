@@ -1,5 +1,5 @@
 <?php
-echo "<h2>-- POLGAN MART --</h2>";
+echo "<h2 style='text-align:center;'>-- POLGAN MART --</h2>";
 
 // Data barang
 $barang = [
@@ -19,9 +19,9 @@ $total = [];
 $grand_total = 0;
 
 // Tampilkan tabel
-echo "<h3>Daftar Barang Yg dibeli:</h3>";
-echo "<table border='1' cellpadding='5' cellspacing='0'>";
-echo "<tr>
+echo "<h3>Daftar Barang yang Dibeli:</h3>";
+echo "<table border='1' cellpadding='5' cellspacing='0' style='border-collapse:collapse; width:70%;'>";
+echo "<tr style='background-color:#f2f2f2;'>
         <th>Kode</th>
         <th>Nama Barang</th>
         <th>Harga (Rp)</th>
@@ -43,17 +43,22 @@ foreach ($barang as $b) {
     echo "<tr>
             <td>{$b[0]}</td>
             <td>{$b[1]}</td>
-            <td align='right'>{$b[2]}</td>
+            <td align='right'>" . number_format($b[2], 0, ',', '.') . "</td>
             <td align='center'>$jumlah_beli</td>
-            <td align='right'>$subtotal</td>
+            <td align='right'>" . number_format($subtotal, 0, ',', '.') . "</td>
           </tr>";
 }
 
 // Tambahkan baris Grand Total di dalam tabel
-echo "<tr style='background-color: #f2f2f2; font-weight: bold;'>
+echo "<tr style='background-color: #f9f9f9; font-weight: bold;'>
         <td colspan='4' align='center'>Grand Total</td>
-        <td align='right'>Rp $grand_total</td>
+        <td align='right'>Rp " . number_format($grand_total, 0, ',', '.') . "</td>
       </tr>";
 
 echo "</table>";
+
+// Tambahan pemisah & pesan akhir
+echo "<hr style='width:70%; margin-top:20px;'>";
+echo "<p style='text-align:center; font-weight:bold;'>Total Belanja Anda: Rp " . number_format($grand_total, 0, ',', '.') . "</p>";
+echo "<p style='text-align:center; font-style:italic;'>Terima kasih sudah berbelanja di POLGAN MART 💖</p>";
 ?>
