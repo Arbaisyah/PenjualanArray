@@ -55,16 +55,36 @@ foreach ($barang as $b) {
     $no_jual++;
 }
 
-// Tambahkan baris Grand Total di dalam tabel
-echo "<tr style='background-color: #f9f9f9; font-weight: bold;'>
+// --- Hitung Diskon ---
+$diskon = 0;
+$keterangan_diskon = "-";
+
+if ($grand_total > 200000) {
+    $diskon = 100000;
+    $keterangan_diskon = "Diskon Rp 100.000 (total > 200.000)";
+} elseif ($grand_total > 100000) {
+    $diskon = $grand_total * 0.20;
+    $keterangan_diskon = "Diskon 20% (total > 100.000)";
+} elseif ($grand_total > 50000) {
+    $diskon = 10000;
+    $keterangan_diskon = "Diskon Rp 10.000 (total > 50.000)";
+} else {
+    $diskon = 0;
+    $keterangan_diskon = "Tidak ada diskon";
+}
+
+// Tambahkan baris Grand Total & Diskon
+echo "<tr style='background-color:#f9f9f9; font-weight:bold;'>
         <td colspan='5' align='center'>Grand Total</td>
         <td align='right'>Rp " . number_format($grand_total, 0, ',', '.') . "</td>
       </tr>";
 
-echo "</table>";
+echo "<tr style='background-color:#ffffe0; font-weight:bold; color:#444;'>
+        <td colspan='5' align='center'>Diskon</td>
+        <td align='right'>Rp " . number_format($diskon, 0, ',', '.') . "</td>
+      </tr>";
 
-// Tambahan pemisah & pesan akhir
-echo "<hr style='width:80%; margin-top:20px;'>";
-echo "<p style='text-align:center; font-weight:bold;'>Total Belanja Anda: Rp " . number_format($grand_total, 0, ',', '.') . "</p>";
-echo "<p style='text-align:center; font-style:italic;'>Terima kasih sudah berbelanja di POLGAN MART 💖</p>";
+
+
+echo "</table>";
 ?>
