@@ -18,7 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['role'] = 'Dosen';
         header("Location: dashboard.php");
         exit;
-    
+    } else {
+        $error = "Username atau password salah!";
+    }
 }
 ?>
 <!DOCTYPE html>
